@@ -6,6 +6,10 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+
+vim.keymap.set("i", "jk", "<ESC>", { silent = true })
+vim.keymap.set("i", "jj", "<ESC>", { silent = true })
+
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')

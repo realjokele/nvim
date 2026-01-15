@@ -1,10 +1,6 @@
 -----------------------------------------------------------
 -- General
 -----------------------------------------------------------
--- Set leader key to space
-vim.g.mapleader = " "
--- Set leader key to space
-vim.g.maplocalleader = " "
 
 -- Number of spaces a tab represents
 vim.opt.tabstop = 2

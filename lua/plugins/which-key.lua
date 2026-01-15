@@ -16,12 +16,17 @@ return {
 		},
 	},
 	opts = {
-		delay = 200,
+		delay = 300,
 		preset = "helix",
 		spec = {
 			{
 				"<leader>w",
 				group = "Window",
+			},
+			{
+				"<leader>f",
+				group = "Find",
+				icon = { icon = "", color = "yellow" },
 			},
 			{
 				"<leader>b",

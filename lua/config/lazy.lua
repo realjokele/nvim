@@ -17,9 +17,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	spec = {
 		{ import = "plugins" },
-		{ import = "plugins.coding.treesitter" },
-		{ import = "plugins.coding.lspconfig" },
-		{ import = "plugins.coding.mason" },
 	},
 	install = {
 		missing = true,

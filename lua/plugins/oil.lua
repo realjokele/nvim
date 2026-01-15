@@ -7,11 +7,11 @@ return {
 	dependencies = { { "nvim-mini/mini.icons", opts = {} } },
 	keys = {
 		{
-			"-",
+			"ö",
 			function()
 				require("oil").open_float()
 			end,
-			desc = "Open parent directory",
+			desc = "Open oil",
 		},
 	},
 	config = function()

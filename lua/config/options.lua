@@ -82,7 +82,12 @@ vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
-vim.diagnostic.config({ virtual_text = true }) -- inline diagnostics
+-- Set inline error messages
+vim.diagnostic.config({
+	virtual_text = true,
+	-- virtual_lines = true,
+	underline = true,
+})
 
 vim.lsp.util.open_floating_preview = (function(orig)
 	return function(contents, syntax, opts, ...)

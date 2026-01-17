@@ -1,33 +1,13 @@
 return {
-	"mason-org/mason-lspconfig.nvim",
-	opts = {
-		ensure_installed = {
-			"ts_ls",
-			"html",
-			"cssls",
-			"tailwindcss",
-			"lua_ls",
-			"stylua",
-			"eslint",
-		},
-	},
-	dependencies = {
-		{
-			"mason-org/mason.nvim",
-			opts = {
-				ui = {
-					icons = {
-						package_installed = "✓",
-						package_pending = "➜",
-						package_uninstalled = "✗",
-					},
-				},
-			},
-		},
-		{
+	{
+		"mason-org/mason.nvim",
+		dependencies = {
+			"mason-org/mason-lspconfig.nvim",
 			"neovim/nvim-lspconfig",
-			config = function()
-				vim.lsp.config("lua_ls", {
+		},
+		opts = {
+			servers = {
+				lua_ls = {
 					settings = {
 						Lua = {
 							diagnostics = {
@@ -35,10 +15,8 @@ return {
 							},
 						},
 					},
-				})
-
-				-- Configure ts_ls with Inlay Hint settings
-				vim.lsp.config("ts_ls", {
+				},
+				ts_ls = {
 					settings = {
 						typescript = {
 							inlayHints = {
@@ -63,27 +41,49 @@ return {
 							},
 						},
 					},
-				})
-				vim.lsp.enable("ts_ls")
-
-				vim.api.nvim_create_autocmd("LspAttach", {
-					group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-					callback = function(ev)
-						-- Enable inlay hints if the server supports it
-						-- local client = vim.lsp.get_client_by_id(ev.data.client_id)
-						-- if client and client.server_capabilities.inlayHintProvider then
-						-- 	vim.lsp.inlay_hint.enable(true, { bufnr = ev.buf })
-						-- end
-
-						local opts = { buffer = ev.buf }
-						vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-						vim.keymap.set("n", "<leader><space>", vim.lsp.buf.hover, opts)
-						vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-						vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-						vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-					end,
-				})
-			end,
+				},
+			},
 		},
+		config = function(_, opts)
+			require("mason").setup({
+				ui = {
+					icons = {
+						package_installed = "✓",
+						package_pending = "➜",
+						package_uninstalled = "✗",
+					},
+				},
+			})
+
+			require("mason-lspconfig").setup({
+				ensure_installed = {
+					"ts_ls",
+					"html",
+					"cssls",
+					"tailwindcss",
+					"lua_ls",
+					"stylua",
+					"eslint",
+				},
+			})
+			for server, config in pairs(opts.servers) do
+				vim.lsp.config(server, config)
+				vim.lsp.enable(server)
+			end
+
+			vim.api.nvim_create_autocmd("LspAttach", {
+				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+				callback = function(ev)
+					local keymapOpts = { buffer = ev.buf }
+					vim.keymap.set("n", "gd", vim.lsp.buf.definition, keymapOpts)
+					vim.keymap.set("n", "<leader><space>", vim.lsp.buf.hover, keymapOpts)
+					vim.keymap.set("n", "gi", vim.lsp.buf.implementation, keymapOpts)
+					vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, keymapOpts)
+					vim.keymap.set("n", "gr", function()
+						require("snacks").picker.lsp_references()
+					end, { buffer = ev.buf, desc = "References" })
+				end,
+			})
+		end,
 	},
 }

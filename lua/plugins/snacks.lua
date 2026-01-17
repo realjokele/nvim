@@ -2,51 +2,25 @@ return {
 	"folke/snacks.nvim",
 	priority = 1000,
 	lazy = false,
-	---@type snacks.Config
-	opts = {
-		bigfile = { enabled = false },
-		dashboard = { enabled = true },
-		explorer = { enabled = false },
-		indent = { enabled = false },
-		input = { enabled = false },
-		notifier = { enabled = false },
-		quickfile = { enabled = false },
-		scope = { enabled = false },
-		scroll = { enabled = false },
-		statuscolumn = { enabled = false },
-		words = { enabled = false },
-		picker = {
-			enabled = { enabled = true },
-			sources = {
-				explorer = {
-					layout = {
-						layout = {
-							position = "right",
-						},
-					},
-				},
-			},
-		},
-	},
 	keys = {
 		{
 			"<leader><space>",
 			function()
-				Snacks.picker.smart()
+				require("snacks").picker.smart()
 			end,
 			desc = "Smart Find Files",
 		},
 		{
 			"<leader>,",
 			function()
-				Snacks.picker.buffers()
+				require("snacks").picker.buffers()
 			end,
 			desc = "Buffers",
 		},
 		{
 			"<leader>e",
 			function()
-				Snacks.explorer()
+				require("snacks").explorer()
 			end,
 			desc = "File Explorer",
 		},
@@ -54,44 +28,73 @@ return {
 		{
 			"<leader>fb",
 			function()
-				Snacks.picker.buffers()
+				require("snacks").picker.buffers()
 			end,
 			desc = "Buffers",
 		},
 		{
 			"<leader>fc",
 			function()
-				Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
+				require("snacks").picker.files({ cwd = vim.fn.stdpath("config") })
 			end,
 			desc = "Find Config File",
 		},
 		{
 			"<leader>ff",
 			function()
-				Snacks.picker.files()
+				require("snacks").picker.files()
 			end,
 			desc = "Find Files",
 		},
 		{
 			"<leader>fg",
 			function()
-				Snacks.picker.git_files()
+				require("snacks").picker.git_files()
 			end,
 			desc = "Find Git Files",
 		},
 		{
 			"<leader>fp",
 			function()
-				Snacks.picker.projects()
+				require("snacks").picker.projects()
 			end,
 			desc = "Projects",
 		},
 		{
 			"<leader>fr",
 			function()
-				Snacks.picker.recent()
+				require("snacks").picker.recent()
 			end,
 			desc = "Recent",
 		},
 	},
+	config = function()
+		local Snacks = require("snacks")
+
+		Snacks.setup({
+			bigfile = { enabled = false },
+			dashboard = { enabled = true },
+			explorer = { enabled = false },
+			indent = { enabled = false },
+			input = { enabled = false },
+			notifier = { enabled = false },
+			quickfile = { enabled = false },
+			scope = { enabled = false },
+			scroll = { enabled = false },
+			statuscolumn = { enabled = false },
+			words = { enabled = false },
+			picker = {
+				enabled = true,
+				sources = {
+					explorer = {
+						layout = {
+							layout = {
+								position = "right",
+							},
+						},
+					},
+				},
+			},
+		})
+	end,
 }

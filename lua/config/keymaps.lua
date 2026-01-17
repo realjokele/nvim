@@ -76,6 +76,6 @@ vim.keymap.set("n", "<leader>bo", delete_other_buffers, { desc = "Delete Other B
 vim.keymap.set("n", "<leader>bD", "<cmd>:bd<cr>", { desc = "Delete Buffer and Window" })
 
 -- Toggle inlay hints
-vim.keymap.set("n", "<leader>th", function()
-	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-end, { desc = "[T]oggle Inlay [H]ints" })
+-- vim.keymap.set("n", "<leader>th", function()
+-- 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+-- end, { desc = "[T]oggle Inlay [H]ints" })

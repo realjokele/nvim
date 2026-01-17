@@ -37,10 +37,44 @@ return {
 					},
 				})
 
-				vim.lsp.enable({ "lua_ls", "ts_ls", "gopls", "eslint" })
+				-- Configure ts_ls with Inlay Hint settings
+				vim.lsp.config("ts_ls", {
+					settings = {
+						typescript = {
+							inlayHints = {
+								includeInlayParameterNameHints = "all",
+								includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+								includeInlayFunctionParameterTypeHints = true,
+								includeInlayVariableTypeHints = true,
+								includeInlayPropertyDeclarationTypeHints = true,
+								includeInlayFunctionLikeReturnTypeHints = true,
+								includeInlayEnumMemberValueHints = true,
+							},
+						},
+						javascript = {
+							inlayHints = {
+								includeInlayParameterNameHints = "all",
+								includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+								includeInlayFunctionParameterTypeHints = true,
+								includeInlayVariableTypeHints = true,
+								includeInlayPropertyDeclarationTypeHints = true,
+								includeInlayFunctionLikeReturnTypeHints = true,
+								includeInlayEnumMemberValueHints = true,
+							},
+						},
+					},
+				})
+				vim.lsp.enable("ts_ls")
+
 				vim.api.nvim_create_autocmd("LspAttach", {
 					group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 					callback = function(ev)
+						-- Enable inlay hints if the server supports it
+						-- local client = vim.lsp.get_client_by_id(ev.data.client_id)
+						-- if client and client.server_capabilities.inlayHintProvider then
+						-- 	vim.lsp.inlay_hint.enable(true, { bufnr = ev.buf })
+						-- end
+
 						local opts = { buffer = ev.buf }
 						vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 						vim.keymap.set("n", "<leader><space>", vim.lsp.buf.hover, opts)

@@ -56,7 +56,22 @@ return {
 			toggle_map("<leader>tn", "number", "Numbers"),
 			toggle_map("<leader>ts", "spell", "Spelling"),
 			toggle_map("<leader>tw", "wrap", "Word Wrap"),
-
+			{
+				"<leader>th",
+				function()
+					-- This uses the built-in Snacks toggle for inlay hints
+					require("snacks").toggle.inlay_hints():toggle()
+				end,
+				desc = function()
+					local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = 0 })
+					return "Inlay Hints " .. (enabled and "[ON]" or "[OFF]")
+				end,
+				-- Dynamic icon color based on state
+				icon = function()
+					local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = 0 })
+					return { icon = enabled and "󰨚" or "󰨙", color = enabled and "green" or "gray" }
+				end,
+			},
 			-- Comments
 			{ "gcc", desc = "Comment line" },
 			{ "gc}", desc = "Comment block" },

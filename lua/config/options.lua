@@ -91,3 +91,8 @@ vim.lsp.util.open_floating_preview = (function(orig)
 		return orig(contents, syntax, opts, ...)
 	end
 end)(vim.lsp.util.open_floating_preview)
+
+-- Folding (treesitter-based, configured per filetype)
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+

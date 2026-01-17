@@ -4,6 +4,13 @@ return {
 	lazy = false,
 	keys = {
 		{
+			"<leader>n",
+			function()
+				require("snacks").notifier.show_history()
+			end,
+			desc = "Notifier History",
+		},
+		{
 			"<leader><space>",
 			function()
 				require("snacks").picker.smart()
@@ -77,7 +84,7 @@ return {
 			explorer = { enabled = false },
 			indent = { enabled = false },
 			input = { enabled = false },
-			notifier = { enabled = false },
+			notifier = { enabled = true },
 			quickfile = { enabled = false },
 			scope = { enabled = false },
 			scroll = { enabled = false },

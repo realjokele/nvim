@@ -33,18 +33,22 @@ return {
 		{
 			"<leader>?",
 			function()
-				require("which-key").show({ global = true })
+				require("which-key").show({ global = false })
 			end,
 			desc = "Buffer Local Keymaps (which-key)",
 		},
 	},
 	opts = {
-		delay = 400,
+		delay = 200,
 		preset = "helix",
 		spec = {
+			-- This 'links' the notifier icon to the keymap defined in Snacks
+			{ "<leader>n", icon = { icon = "󱗗", color = "cyan" } },
+
 			{ "<leader>w", group = "Window" },
 			{ "<leader>f", group = "Find", icon = { icon = "", color = "yellow" } },
 			{ "<leader>b", group = "Buffers", icon = { icon = "", color = "yellow" } },
+			{ "gc", group = "Comment", icon = { icon = "󰆈", color = "orange" } },
 
 			-- Dynamic Toggles Group
 			{ "<leader>t", group = "Toggle", icon = { icon = "󰔡", color = "blue", loop = true } },
@@ -52,6 +56,11 @@ return {
 			toggle_map("<leader>tn", "number", "Numbers"),
 			toggle_map("<leader>ts", "spell", "Spelling"),
 			toggle_map("<leader>tw", "wrap", "Word Wrap"),
+
+			-- Comments
+			{ "gcc", desc = "Comment line" },
+			{ "gc}", desc = "Comment block" },
+			-- { "gc", desc = "Comment selection", mode = "v" },
 		},
 	},
 }

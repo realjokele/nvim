@@ -16,7 +16,7 @@ return {
 		},
 	},
 	opts = {
-		delay = 300,
+		delay = 400,
 		preset = "helix",
 		spec = {
 			{

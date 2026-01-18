@@ -95,7 +95,7 @@ return {
 
 		Snacks.setup({
 			bigfile = { enabled = false },
-			dashboard = { enabled = true },
+			dashboard = { enabled = false },
 			explorer = { enabled = false },
 			indent = { enabled = false },
 			input = { enabled = false },

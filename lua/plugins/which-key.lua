@@ -77,6 +77,9 @@ return {
 			{ "gcc", desc = "Comment line" },
 			{ "gc}", desc = "Comment block" },
 			-- { "gc", desc = "Comment selection", mode = "v" },
+
+			-- Adding icons to keys
+			{ "<leader>h", icon = { icon = "󰋖" } },
 		},
 	},
 }

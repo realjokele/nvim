@@ -25,6 +25,13 @@ return {
 			desc = "Buffers",
 		},
 		{
+			"<leader>h",
+			function()
+				require("snacks").picker.help()
+			end,
+			desc = "Help",
+		},
+		{
 			"<leader>e",
 			function()
 				require("snacks").explorer()

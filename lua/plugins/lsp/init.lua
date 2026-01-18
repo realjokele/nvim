@@ -17,6 +17,9 @@ return {
 					},
 				},
 				ts_ls = {
+					on_attach = function(client, _)
+						require("workspace-diagnostics").populate_workspace_diagnostics(client, 0)
+					end,
 					settings = {
 						typescript = {
 							inlayHints = {
@@ -79,6 +82,12 @@ return {
 					-- vim.keymap.set("n", "<leader><space>", vim.lsp.buf.hover, keymapOpts)
 					vim.keymap.set("n", "gi", vim.lsp.buf.implementation, keymapOpts)
 					vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, keymapOpts)
+					vim.keymap.set(
+						"n",
+						"<leader>ca",
+						vim.lsp.buf.code_action,
+						{ buffer = ev.buf, desc = "Code Actions" }
+					)
 					vim.keymap.set("n", "gr", function()
 						require("snacks").picker.lsp_references()
 					end, { buffer = ev.buf, desc = "References" })

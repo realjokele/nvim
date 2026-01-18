@@ -72,6 +72,7 @@ return {
 					return { icon = enabled and "󰨚" or "󰨙", color = enabled and "green" or "gray" }
 				end,
 			},
+
 			-- Comments
 			{ "gcc", desc = "Comment line" },
 			{ "gc}", desc = "Comment block" },

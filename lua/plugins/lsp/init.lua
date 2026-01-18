@@ -76,7 +76,7 @@ return {
 				callback = function(ev)
 					local keymapOpts = { buffer = ev.buf }
 					vim.keymap.set("n", "gd", vim.lsp.buf.definition, keymapOpts)
-					vim.keymap.set("n", "<leader><space>", vim.lsp.buf.hover, keymapOpts)
+					-- vim.keymap.set("n", "<leader><space>", vim.lsp.buf.hover, keymapOpts)
 					vim.keymap.set("n", "gi", vim.lsp.buf.implementation, keymapOpts)
 					vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, keymapOpts)
 					vim.keymap.set("n", "gr", function()

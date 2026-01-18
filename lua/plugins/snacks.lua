@@ -10,13 +10,13 @@ return {
 			end,
 			desc = "Notifier History",
 		},
-		{
-			"<leader><space>",
-			function()
-				require("snacks").picker.smart()
-			end,
-			desc = "Smart Find Files",
-		},
+		-- {
+		-- 	"<leader><space>",
+		-- 	function()
+		-- 		require("snacks").picker.smart()
+		-- 	end,
+		-- 	desc = "Smart Find Files",
+		-- },
 		{
 			"<leader>,",
 			function()
@@ -73,6 +73,14 @@ return {
 				require("snacks").picker.recent()
 			end,
 			desc = "Recent",
+		},
+		{ "<leader>,", false },
+		{
+			"<leader><space>",
+			function()
+				require("snacks").picker.buffers()
+			end,
+			desc = "Buffers",
 		},
 	},
 	config = function()

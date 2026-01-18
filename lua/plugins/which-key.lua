@@ -74,6 +74,14 @@ return {
 				end,
 			},
 
+			{
+				"<leader>w+",
+				"<cmd>resize +5<cr>",
+				desc = "Increase Height",
+				icon = { icon = "󰬛 ", color = "green" },
+			},
+			{ "<leader>w-", "<cmd>resize -5<cr>", desc = "Decrease Height", icon = { icon = "󰬚 ", color = "red" } },
+
 			-- Comments
 			{ "gcc", desc = "Comment line" },
 			{ "gc}", desc = "Comment block" },

@@ -75,7 +75,14 @@ vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "Delete Buffer" }
 vim.keymap.set("n", "<leader>bo", delete_other_buffers, { desc = "Delete Other Buffers" })
 vim.keymap.set("n", "<leader>bD", "<cmd>:bd<cr>", { desc = "Delete Buffer and Window" })
 
--- Toggle inlay hints
--- vim.keymap.set("n", "<leader>th", function()
--- 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
--- end, { desc = "[T]oggle Inlay [H]ints" })
+-- Open Lazy UI
+vim.keymap.set("n", "<leader>pl", "<cmd>Lazy<cr>", { desc = "Lazy UI" })
+-- Open Mason UI
+vim.keymap.set("n", "<leader>pm", "<cmd>Mason<cr>", { desc = "Mason UI" })
+
+-- System & Health
+vim.keymap.set("n", "<leader>ph", "<cmd>checkhealth<cr>", { desc = "System Health" })
+vim.keymap.set("n", "<leader>pi", "<cmd>LspInfo<cr>", { desc = "LSP Info" })
+vim.keymap.set("n", "<leader>pc", function()
+	require("snacks").picker.colorschemes()
+end, { desc = "Colorschemes" }) -- or Snacks.picker.colorschemes()

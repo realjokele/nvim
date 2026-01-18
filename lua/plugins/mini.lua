@@ -1,7 +1,7 @@
 return {
 	{
 		{ "nvim-mini/mini.pairs", version = "*", opts = {} },
-		{ "nvim-mini/mini.cursorword", version = "*", opts = {} },
+		{ "nvim-mini/mini.cursorword", version = "*", opts = { delay = 500 } },
 		{
 			"nvim-mini/mini.indentscope",
 			version = "*",
@@ -29,5 +29,8 @@ return {
 				})
 			end,
 		},
+		{ "nvim-mini/mini.starter", version = "*", opts = {
+			footer = "",
+		} },
 	},
 }

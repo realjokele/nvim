@@ -49,6 +49,7 @@ return {
 			{ "<leader>f", group = "Find", icon = { icon = "", color = "yellow" } },
 			{ "<leader>b", group = "Buffers", icon = { icon = "", color = "yellow" } },
 			{ "gc", group = "Comment", icon = { icon = "󰆈", color = "orange" } },
+			{ "<leader>p", group = "System", icon = { icon = "", color = "orange" } },
 
 			-- Dynamic Toggles Group
 			{ "<leader>t", group = "Toggle", icon = { icon = "󰔡", color = "blue", loop = true } },

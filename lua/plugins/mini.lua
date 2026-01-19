@@ -1,11 +1,20 @@
 return {
 	{
+		{ "nvim-mini/mini.ai", version = "*", opts = {} },
 		{ "nvim-mini/mini.pairs", version = "*", opts = {} },
 		{ "nvim-mini/mini.cursorword", version = "*", opts = { delay = 500 } },
 		{
 			"nvim-mini/mini.indentscope",
 			version = "*",
 			opts = {},
+			config = function()
+				local indentscope = require("mini.indentscope")
+				indentscope.setup({
+					draw = {
+						animation = indentscope.gen_animation.none(),
+					},
+				})
+			end,
 		},
 		{
 			"nvim-mini/mini-git",

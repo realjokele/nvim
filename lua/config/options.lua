@@ -60,7 +60,7 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 
 -- Faster scrolling
---vim.opt.lazyredraw = true
+-- vim.opt.lazyredraw = true
 
 -----------------------------------------------------------
 -- Search Config
@@ -79,6 +79,9 @@ vim.diagnostic.config({
 	underline = true,
 })
 
+-----------------------------------------------------------
+-- Floating windows
+-----------------------------------------------------------
 vim.lsp.util.open_floating_preview = (function(orig)
 	return function(contents, syntax, opts, ...)
 		opts = opts or {}

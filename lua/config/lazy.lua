@@ -19,7 +19,7 @@ require("lazy").setup({
 		{ import = "plugins" },
 	},
 	install = { colorscheme = { "default" } },
-	checker = { enabled = true, notify = true },
+	checker = { enabled = true, notify = false },
 	ui = {
 		border = "single",
 	},

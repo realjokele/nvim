@@ -2,6 +2,7 @@
 -- General
 -----------------------------------------------------------
 vim.g.have_nerd_font = true
+vim.opt.termguicolors = true
 
 -- Number of spaces a tab represents
 vim.opt.tabstop = 2

@@ -103,7 +103,7 @@ return {
 			quickfile = { enabled = false },
 			scope = { enabled = false },
 			scroll = { enabled = false },
-			statuscolumn = { enabled = false },
+			statuscolumn = { enabled = true },
 			words = { enabled = false },
 			picker = {
 				enabled = true,
